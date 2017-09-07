@@ -11,14 +11,9 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            _ini_loaded_file()include('Student.php');
-
-            $students = array();
-
-            foreach($students as $student)
-                echo $student->toString();
-        
-        
+            include('Student.php');
+            $students = array();   
+            
             $first = new Student();
             $first->surname = "Doe";
             $first->first_name = "John";
@@ -39,6 +34,20 @@ and open the template in the editor.
             $second->add_grade(80);
             $second->add_grade(50);
             $students['a456'] = $second;
+            
+            $third = new Student();
+            $third->surname = "Parry";
+            $third->first_name = "Jim";
+            $third->add_email('work',"jim_parry@bcit.ca");
+            $third->add_grade(85);
+            $students['j0'] = $third;
+            
+            ksort($students); // one of the many sort functions
+
+            
+            foreach($students as $student)
+                echo $student->toString();
+        
             
 
 ?>
